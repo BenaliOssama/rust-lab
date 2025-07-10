@@ -9,7 +9,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("Problem prasing arguments: {err}");
+        eprintln!("Problem prasing arguments: {err}");
         process::exit(1);
     }) ;
 
@@ -17,7 +17,7 @@ fn main() {
     println!("In file {}", config.file_path);
     
     if let Err(e) = minigrep::run(config) {
-        println!("Applicationi error: {e}");
+        eprintln!("Applicationi error: {e}");
         process::exit(1);
     }
 }
